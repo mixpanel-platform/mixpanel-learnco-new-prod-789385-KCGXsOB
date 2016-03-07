@@ -42,12 +42,12 @@
       var runQuery = function() {
         MP.api.custom_query(script, params).done(function(results){
           console.log(results)
-          for (i=0; i< results.length; i++){
+          for (i in data){
             data[results[i]key[0]] : results[i].value
           }
           console.log(data)
            
-           eventGraph.MPChart('setData', results)
+          eventGraph.MPChart('setData', data)
         });
       }
       runQuery();
