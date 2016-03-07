@@ -19,11 +19,11 @@
         .reduce(mixpanel.reducer.top(25))
     }
   </script>
-    <div class="mixpanel-platform-section">
-      <div id="by" class="mixpanel-platform-label" style="margin-left: 10px; display: none;">by</div>
-      <div id="graph"></div>
-    </div>
-    <div id="table"></div>
+    <!--<div class="mixpanel-platform-section">-->
+    <!--  <div id="by" class="mixpanel-platform-label" style="margin-left: 10px; display: none;">by</div>-->
+    <!--  <div id="graph"></div>-->
+    <!--</div>-->
+    <!--<div id="table"></div>-->
     <script>
 
       var eventGraph  = $('#graph').MPChart({chartType: 'bar'});
@@ -37,7 +37,7 @@
           for (x in results){
             data[results[x]key[0]] : results[x].value
           }
-          eventGraph.MPChart('setData', data);
+          //eventGraph.MPChart('setData', data);
         });
 
     </script>
