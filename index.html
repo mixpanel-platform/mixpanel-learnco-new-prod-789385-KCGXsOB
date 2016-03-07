@@ -26,7 +26,7 @@
       return People(
         )
         .filter(function(user){
-        return user.properties.current_lesson !== undefined && user.properties.$last_seen <= sevenDaysRolling
+        return user.properties.current_lesson !== undefined && user.properties.$last_seen <= params.rollingweek
         })
         .groupBy(["properties.current_lesson"], mixpanel.reducer.count()
         )
@@ -46,34 +46,39 @@
       var eventGraph  = $('#graph').MPChart({chartType: 'bar'});
       var eventGraph2  = $('#graph2').MPChart({chartType: 'bar'});
       var eventTable  = $('#table').MPTable({});
-      var params = {};  
+      var sevenDaysRolling = moment().subtract(1, 'month').format("YYYY-MM-DD")
+      var params = {
+        "rollingweek" : sevenDaysRolling
+      };  
       var script = document.getElementById('query').innerHTML;
       var script3 = document.getElementById('query3').innerHTML;
-      console.log(script3)
+
       var data = {};
-      // var runQuery = function(){
-      //   MP.api.custom_query(script).done(function(results){
-          
-      //     for(x in results[0]){
-      //       data[results[0][x].key[0]] = results[0][x].value
-      //     }
-          
-      //     eventGraph.MPChart('setData', data);
-      //   })
-      //   var data3 ={}
-      //   MP.api.custom_query(script3).done(function(results3){
-  
-      //   for(x in results3[0]){
-      //     data3[results3[0][x].key[0]] = results3[0][x].value
-      //   }
-      //   console.log(results3)
-      //   eventGraph2.MPChart('setData', data3);
-      //   })
-      // }
+      var runQuery = function(){
       
-      // $(document).ready(function(){
-      //   runQuery()
-      // })
+        MP.api.custom_query(script).done(function(results){
+          
+          for(x in results[0]){
+            data[results[0][x].key[0]] = results[0][x].value
+          }
+          
+          eventGraph.MPChart('setData', data);
+        })
+        var data3 ={}
+        console.log(script3)
+        MP.api.custom_query(script3).done(function(results3){
+  
+        for(x in results3[0]){
+          data3[results3[0][x].key[0]] = results3[0][x].value
+        }
+        console.log(results3)
+        eventGraph2.MPChart('setData', data3);
+        })
+      }
+      
+      $(document).ready(function(){
+        runQuery()
+      })
 
     </script>
   </body>
