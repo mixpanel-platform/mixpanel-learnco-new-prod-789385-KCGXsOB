@@ -64,8 +64,9 @@
             data2[results2[0][x].key[0]] = results2[0][x].value
           }
           console.log(data2)
-          eventTable.MPChart('setData', data2);
+          
         })
+        eventTable.MPChart('setData', data2);
       }
       $(document).ready(function(){
         runQuery()
