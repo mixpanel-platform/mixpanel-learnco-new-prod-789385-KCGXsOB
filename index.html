@@ -20,7 +20,9 @@
     }
   </script>
   <script id='query3'>
-    
+    var oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    console.log(oneWeekAgo)
     function main() {
       return People(
         )
