@@ -57,14 +57,14 @@
           eventGraph.MPChart('setData', data);
         })
         var data2 ={}
-        MP.api.custom_query(script2).done(function(results2){
-          console.log(results2)
-          for(x in results2[0]){
-            data[results2[0][x].key[0]] = results2[0][x].value
-          }
-          console.log(data2)
-          eventTable.MPChart('setData', data2);
-        })
+        // MP.api.custom_query(script2).done(function(results2){
+        //   console.log(results2)
+        //   for(x in results2[0]){
+        //     data[results2[0][x].key[0]] = results2[0][x].value
+        //   }
+        //   console.log(data2)
+        //   eventTable.MPChart('setData', data2);
+        // })
       }
       $(document).ready(function(){
         runQuery()
