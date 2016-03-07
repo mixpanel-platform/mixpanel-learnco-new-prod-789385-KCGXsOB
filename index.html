@@ -37,7 +37,7 @@
       MP.api.custom_query(script).done(function(results){
         console.log(results)
         for(x in results){
-          data[results[0][x].key[0]] : results[0][x].value
+          data[results[0][x].key[0]] = results[0][x].value
         }
       })
 
