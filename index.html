@@ -31,18 +31,35 @@
         .reduce(mixpanel.reducer.top(25))
     }
   </script>
+  <script id='query3'>
+    function main() {
+      return People(
+        )
+        .filter(function(user){
+        return user.properties.current_lesson !== undefined && user.properties.$last_seen >= new Date("2016-03-01")
+        })
+        .groupBy(["properties.current_lesson"], mixpanel.reducer.count()
+        )
+        .reduce(mixpanel.reducer.top(10))
+    }
+  </script>
     <div class="mixpanel-platform-section">
       <div id="by" class="mixpanel-platform-label" style="margin-left: 10px; display: none;">by</div>
       <div id="graph"></div>
     </div>
+    <br>
+    <div id="graph2"></div>
+    <br>
     <div id="table"></div>
     <script>
 
       var eventGraph  = $('#graph').MPChart({chartType: 'bar'});
+      var eventGraph2  = $('#graph2').MPChart({chartType: 'bar'});
       var eventTable  = $('#table').MPTable({});
       var params = {};  
       var script = document.getElementById('query').innerHTML;
       var script2 = document.getElementById('query2').innerHTML;
+      var script3 = document.getElementById('query3').innerHTML;
       console.log(script)
       var data = {};
       var runQuery = function(){
@@ -61,9 +78,15 @@
             data2[results2[0][x].key[0]] = results2[0][x].value
           }
           console.log(data2)
-          eventTable.MPTable('setData', data2);
+          //eventTable.MPTable('setData', data2);
         })
-        
+        var data3 ={}
+        MP.api.custom_query(script3).done(function(results3){
+        console.log(results2)
+        for(x in results3[0]){
+          data3[results3[0][x].key[0]] = results3[0][x].value
+        }
+        eventGraph.MPChart('setData', data3);
       }
       $(document).ready(function(){
         runQuery()
