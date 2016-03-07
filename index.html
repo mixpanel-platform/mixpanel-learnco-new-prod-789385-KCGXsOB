@@ -39,7 +39,7 @@
       var script = document.getElementById('query').innerHTML;
       var runQuery = function() {
         MP.api.custom_query(script, params).done(function(results){
-          console.log(results.value())
+          console.log(results)
           
         })
         
