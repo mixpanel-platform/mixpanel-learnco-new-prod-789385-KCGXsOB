@@ -25,7 +25,7 @@
       return People(
         )
         .filter(function(user){
-        return user.properties.current_lesson !== undefined && user.properties.$last_seen <= params.rollingweek
+        return user.properties.$last_seen <= params.rollingweek
         })
         .groupBy(["properties.current_lesson"], mixpanel.reducer.count()
         )
