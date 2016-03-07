@@ -84,37 +84,38 @@
           
           eventGraph.MPChart('setData', data);
         })
-        // var data2 = {
-        //   "Intro to Tic Tac Toe": "",
-        //   "Lab: HTML Playground": "",
-        //   "Lab: Album Cover": "",
-        //   "Intro to the Shell": "",
-        //   "First Lab": "",
-        //   "Integrating Models for Full MVC": "",
-        //   "CLI Basics": "",
-        //   "Opening a Lab": "",
-        //   "Lesson: Hack Twitter With HTML": "",
-        //   "Lab: Homer's Diet": "",
-        //   "BASH Tutorial": "",
-        //   "Lab: Gnome-Time": ,
-        //   "Interactive Practice: MVC Framework": "",
-        //   "Learning on Learn": "",
-        //   "Learn Workflow": "",
-        //   "Tic Tac Toe Move": "",
-        //   "Lesson: What Not To Wear CSS Edition": "",
-        //   "Interpolation Super Power": "",
-        //   "Hello World Ruby": ""
-        // };
-        // MP.api.custom_query(script2).done(function(results2){
+        var data2 = {
+          "Intro to Tic Tac Toe": 1,
+          "Lab: HTML Playground": 1,
+          "Lab: Album Cover": 1,
+          "Intro to the Shell": 1,
+          "First Lab": 1,
+          "Integrating Models for Full MVC": 1,
+          "CLI Basics": 1,
+          "Opening a Lab": 1,
+          "Lesson: Hack Twitter With HTML": 1,
+          "Lab: Homer's Diet": 1,
+          "BASH Tutorial": 1,
+          "Lab: Gnome-Time": 1,
+          "Interactive Practice: MVC Framework": 1,
+          "Learning on Learn": 1,
+          "Learn Workflow": 1,
+          "Tic Tac Toe Move": 1,
+          "Lesson: What Not To Wear CSS Edition": 1,
+          "Interpolation Super Power": 1,
+          "Hello World Ruby": 1
+        }
+        console.log(data2)
+        MP.api.custom_query(script2).done(function(results2){
           
-        //   for(x in data2){
-        //     if (x === results2[0][x].key[0]){
-        //       data2[x] =  results2[0][x].value
-        //     }
-        //   }
+          for(x in data2){
+            if (x === results2[0][x].key[0]){
+              data2[x] =  results2[0][x].value
+            }
+          }
           
-        //   eventGraph2.MPChart('setData', data2);
-        //})
+          eventGraph2.MPChart('setData', data2);
+        })
         var data3 ={}
         console.log(script3)
         MP.api.custom_query(script3, params).done(function(results3){
