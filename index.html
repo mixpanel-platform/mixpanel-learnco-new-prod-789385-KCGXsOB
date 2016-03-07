@@ -32,7 +32,7 @@
     }
   </script>
   <script id='query3'>
-    var sevenDaysRolling = moment().subtract(1, 'week').format("YYYY-MM-DD") 
+    var sevenDaysRolling = moment().subtract(1, 'month').format("YYYY-MM-DD") 
     console.log(sevenDaysRolling)
     function main() {
       return People(
@@ -66,7 +66,7 @@
       var data = {};
       var runQuery = function(){
         MP.api.custom_query(script).done(function(results){
-          //console.log(results)
+          
           for(x in results[0]){
             data[results[0][x].key[0]] = results[0][x].value
           }
