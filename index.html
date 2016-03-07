@@ -7,7 +7,7 @@
     <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
   </head>
   <body class="mixpanel-platform-body">
-     <script id='query'>
+  <script id='query'>
     function main() {
       return People(
         )
@@ -37,19 +37,12 @@
       });
       var params = {}  
       var script = document.getElementById('query').innerHTML;
+      console.log(script);
       var runQuery = function() {
         MP.api.custom_query(script, params).done(function(results){
           console.log(results)
           
         })
-        
-      // eventSelect.on('change', function(e, eventName) {
-      //   propSelect.MPPropertySelect('setEvent', eventName);
-      //   $("#by").show();
-      //   runQuery();
-      // });
-      // propSelect.on('change', runQuery);
-      // dateSelect.on('change', runQuery);
     </script>
   </body>
 </html>
