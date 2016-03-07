@@ -14,7 +14,9 @@
         .filter(function(user){
         return user.properties.current_lesson !== undefined
         })
-        .groupBy(["properties.current_lesson"], mixpanel.reducer.top(25))
+        .groupBy(["properties.current_lesson"], mixpanel.reducer.count()
+        )
+        .reduce(mixpanel.reducer.top(25))
     }
   </script>
     <div class="mixpanel-platform-section">
