@@ -19,6 +19,18 @@
         .reduce(mixpanel.reducer.top(10))
     }
   </script>
+  <script id='query2'>
+    function main() {
+      return People(
+        )
+        .filter(function(user){
+        return user.properties.current_lesson !== undefined
+        })
+        .groupBy(["properties.current_lesson"], mixpanel.reducer.count()
+        )
+        .reduce(mixpanel.reducer.top(10))
+    }
+  </script>
   <script id='query3'>
     var oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
@@ -43,13 +55,17 @@
     <br>
     <div id="graph2"></div>
     <br>
+    <div id="graph3"></div>
+    <br>
     <div id="table"></div>
     <script>
 
       var eventGraph  = $('#graph').MPChart({chartType: 'bar'});
-      var eventGraph2  = $('#graph2').MPChart({chartType: 'bar'});
+      var eventGraph3  = $('#graph2').MPChart({chartType: 'bar'});
+      var eventGraph3  = $('#graph3').MPChart({chartType: 'bar'});
       var eventTable  = $('#table').MPTable({});
       var script = document.getElementById('query').innerHTML;
+      var script2 = document.getElementById('query2').innerHTML;
       var script3 = document.getElementById('query3').innerHTML;
 
       var data = {};
@@ -63,6 +79,16 @@
           
           eventGraph.MPChart('setData', data);
         })
+        var data2 = {};
+        var runQuery = function(){
+          MP.api.custom_query(script2).done(function(results2){
+            
+            for(x in results2[0]){
+              data2[results2[0][x].key[0]] = results2[0][x].value
+            }
+            
+            eventGraph2.MPChart('setData', data2);
+        })
         var data3 ={}
         console.log(script3)
         MP.api.custom_query(script3, params).done(function(results3){
@@ -71,7 +97,7 @@
           data3[results3[0][x].key[0]] = results3[0][x].value
         }
         console.log(results3)
-        eventGraph2.MPChart('setData', data3);
+        eventGraph3.MPChart('setData', data3);
         })
       }
       
