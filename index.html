@@ -80,14 +80,13 @@
           eventGraph.MPChart('setData', data);
         })
         var data2 = {};
-        var runQuery = function(){
-          MP.api.custom_query(script2).done(function(results2){
-            
-            for(x in results2[0]){
-              data2[results2[0][x].key[0]] = results2[0][x].value
-            }
-            
-            eventGraph2.MPChart('setData', data2);
+        MP.api.custom_query(script2).done(function(results2){
+          
+          for(x in results2[0]){
+            data2[results2[0][x].key[0]] = results2[0][x].value
+          }
+          
+          eventGraph2.MPChart('setData', data2);
         })
         var data3 ={}
         console.log(script3)
