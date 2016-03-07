@@ -35,10 +35,10 @@
         showPercentages: true,
         firstColHeader: 'Event'
       });
-
+      var params = {}  
       var script = document.getElementById('query').innerHTML;
       var runQuery = function() {
-        MP.api.custom_query(script).done(function(results){
+        MP.api.custom_query(script, params).done(function(results){
           console.log(results.value())
           
         })
