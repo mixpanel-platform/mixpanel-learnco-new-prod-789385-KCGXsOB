@@ -19,18 +19,6 @@
         .reduce(mixpanel.reducer.top(10))
     }
   </script>
-  <script id='query2'>
-    function main() {
-      return People(
-        )
-        .filter(function(user){
-        return user.properties.current_lesson !== undefined
-        })
-        .groupBy(["properties.current_lesson"], mixpanel.reducer.count()
-        )
-        .reduce(mixpanel.reducer.top(25))
-    }
-  </script>
   <script id='query3'>
     var sevenDaysRolling = moment().subtract(1, 'month').format("YYYY-MM-DD") 
     console.log(sevenDaysRolling)
@@ -60,42 +48,32 @@
       var eventTable  = $('#table').MPTable({});
       var params = {};  
       var script = document.getElementById('query').innerHTML;
-      var script2 = document.getElementById('query2').innerHTML;
       var script3 = document.getElementById('query3').innerHTML;
-      //console.log(script)
+      console.log(script3)
       var data = {};
-      var runQuery = function(){
-        MP.api.custom_query(script).done(function(results){
+      // var runQuery = function(){
+      //   MP.api.custom_query(script).done(function(results){
           
-          for(x in results[0]){
-            data[results[0][x].key[0]] = results[0][x].value
-          }
-          //console.log(data)
-          eventGraph.MPChart('setData', data);
-        })
-        // var data2 ={}
-        // MP.api.custom_query(script2).done(function(results2){
-        //   console.log(results2)
-        //   for(x in results2[0]){
-        //     data2[results2[0][x].key[0]] = results2[0][x].value
-        //   }
-        //   console.log(data2)
-        //   //eventTable.MPTable('setData', data2);
-        // })
-        var data3 ={}
-        MP.api.custom_query(script3).done(function(results3){
+      //     for(x in results[0]){
+      //       data[results[0][x].key[0]] = results[0][x].value
+      //     }
+          
+      //     eventGraph.MPChart('setData', data);
+      //   })
+      //   var data3 ={}
+      //   MP.api.custom_query(script3).done(function(results3){
   
-        for(x in results3[0]){
-          data3[results3[0][x].key[0]] = results3[0][x].value
-        }
-        console.log(results3)
-        eventGraph2.MPChart('setData', data3);
-        })
-      }
+      //   for(x in results3[0]){
+      //     data3[results3[0][x].key[0]] = results3[0][x].value
+      //   }
+      //   console.log(results3)
+      //   eventGraph2.MPChart('setData', data3);
+      //   })
+      // }
       
-      $(document).ready(function(){
-        runQuery()
-      })
+      // $(document).ready(function(){
+      //   runQuery()
+      // })
 
     </script>
   </body>
