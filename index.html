@@ -41,8 +41,8 @@
       var data = {}
       var runQuery = function() {
         MP.api.custom_query(script, params).done(function(results){
-          console.log(results)
-          for (i in data){
+          // console.log(results)
+          for (i in results){
             data[results[i]key[0]] : results[i].value
           }
           console.log(data)
