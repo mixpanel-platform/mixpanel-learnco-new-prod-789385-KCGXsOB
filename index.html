@@ -16,7 +16,7 @@
         })
         .groupBy(["properties.current_lesson"], mixpanel.reducer.count()
         )
-        .reduce(mixpanel.reducer.top(25))
+        .reduce(mixpanel.reducer.top(10))
     }
   </script>
     <div class="mixpanel-platform-section">
