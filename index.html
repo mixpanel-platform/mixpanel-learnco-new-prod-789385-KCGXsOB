@@ -32,7 +32,7 @@
     }
   </script>
   <script id='query3'>
-    var sevenDaysRolling = new Date(moment().subtract(1, 'week').format("YYYY-MM-DD"))
+    var sevenDaysRolling = moment().subtract(1, 'week').format("YYYY-MM-DD")
     console.log(sevenDaysRolling)
     var today = moment()
     console.log(today)
