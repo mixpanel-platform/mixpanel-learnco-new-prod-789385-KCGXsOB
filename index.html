@@ -32,7 +32,7 @@
     }
   </script>
   <script id='query3'>
-    var sevenDaysRolling = new Date(moment().subtract(1, 'week'))
+    var sevenDaysRolling = new Date(moment().subtract(1, 'week')).format("YYYY-MM-DD")
     console.log(sevenDaysRolling)
     var today = moment()
     console.log(today)
@@ -40,7 +40,7 @@
       return People(
         )
         .filter(function(user){
-        return user.properties.current_lesson !== undefined && user.properties.$last_seen <= sevenDaysRolling
+        return user.properties.current_lesson !== undefined 
         })
         .groupBy(["properties.current_lesson"], mixpanel.reducer.count()
         )
