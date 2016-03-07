@@ -22,8 +22,7 @@
     <div class="mixpanel-platform-section">
       <div id="eventSelect" style="float: left;"></div>
       <div id="by" class="mixpanel-platform-label" style="margin-left: 10px; display: none;">by</div>
-      <div id="propSelect" style="float: left;"></div>
-      <div id="dateSelect" style="float: right;"></div>
+      //<div id="dateSelect" style="float: right;"></div>
       <div style="clear: both;"></div>
       <div id="graph"></div>
     </div>
@@ -43,6 +42,7 @@
       var runQuery = function() {
         MP.api.custom_query(script, params).done(function(results){
           console.log(results)
+           eventGraph.MPChart('setData', results)
         });
       }
       runQuery();
