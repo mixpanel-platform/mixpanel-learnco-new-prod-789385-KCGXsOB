@@ -6,6 +6,16 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.css">
     <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
   </head>
+  <script id='query'>
+    function main() {
+      return People(
+        )
+        .filter(function(user){
+        return user.properties.current_lesson !== undefined
+        })
+        .groupBy(["properties.current_lesson"], mixpanel.reducer.count())
+    }
+  </script>
   <body class="mixpanel-platform-body">
     <div class="mixpanel-platform-section">
       <div id="eventSelect" style="float: left;"></div>
@@ -26,25 +36,20 @@
         firstColHeader: 'Event'
       });
 
+      var script = document.getElementById('query').innerHTML;
       var runQuery = function() {
-        var eventName = eventSelect.MPEventSelect('value'),
-            propName  = propSelect.MPPropertySelect('value'),
-            dateRange = dateSelect.MPDatepicker('value');
-
-        if (eventName) {
-          MP.api.segment(eventName, propName, dateRange).done(function(results) {
-            eventGraph.MPChart('setData', results);
-            eventTable.MPTable('setData', results);
-          });
+        MP.api.custom_query(script).done(function(results){
+          console.log(results.value())
+          
         }
-      };
-      eventSelect.on('change', function(e, eventName) {
-        propSelect.MPPropertySelect('setEvent', eventName);
-        $("#by").show();
-        runQuery();
-      });
-      propSelect.on('change', runQuery);
-      dateSelect.on('change', runQuery);
+        
+      // eventSelect.on('change', function(e, eventName) {
+      //   propSelect.MPPropertySelect('setEvent', eventName);
+      //   $("#by").show();
+      //   runQuery();
+      // });
+      // propSelect.on('change', runQuery);
+      // dateSelect.on('change', runQuery);
     </script>
   </body>
 </html>
