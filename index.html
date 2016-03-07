@@ -39,17 +39,17 @@
       var params = {}  
       var script = document.getElementById('query').innerHTML;
       var data = {}
-      var runQuery = function() {
-        MP.api.custom_query(script, params).done(function(results){
-          // console.log(results)
-          for (x in results){
-            data[results[x]key[0]] : results[x].value
-          }
-          console.log(data)
+      // var runQuery = function() {
+      //   MP.api.custom_query(script, params).done(function(results){
+      //     // console.log(results)
+      //     for (x in results){
+      //       data[results[x]key[0]] : results[x].value
+      //     }
+      //     console.log(data)
            
-          eventGraph.MPChart('setData', data)
-        });
-      }
+      //     eventGraph.MPChart('setData', data)
+      //   });
+      // }
       runQuery();
     </script>
   </body>
