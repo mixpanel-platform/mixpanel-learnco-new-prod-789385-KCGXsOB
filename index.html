@@ -47,22 +47,27 @@
       var script2 = document.getElementById('query2').innerHTML;
       console.log(script)
       var data = {};
-      MP.api.custom_query(script).done(function(results){
-        console.log(results)
-        for(x in results[0]){
-          data[results[0][x].key[0]] = results[0][x].value
-        }
-        console.log(data)
-        eventGraph.MPChart('setData', data);
-      })
-      var data2 ={}
-      MP.api.custom_query(script2).done(function(results2){
-        console.log(results2)
-        for(x in results2[0]){
-          data[results2[0][x].key[0]] = results2[0][x].value
-        }
-        console.log(data)
-        eventTable.MPChart('setData', data);
+      var runQuery = function(){
+        MP.api.custom_query(script).done(function(results){
+          console.log(results)
+          for(x in results[0]){
+            data[results[0][x].key[0]] = results[0][x].value
+          }
+          console.log(data)
+          eventGraph.MPChart('setData', data);
+        })
+        var data2 ={}
+        MP.api.custom_query(script2).done(function(results2){
+          console.log(results2)
+          for(x in results2[0]){
+            data[results2[0][x].key[0]] = results2[0][x].value
+          }
+          console.log(data)
+          eventTable.MPChart('setData', data);
+        })
+      }
+      $(document).ready(function(){
+        runQuery()
       })
 
     </script>
