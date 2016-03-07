@@ -60,15 +60,15 @@
       var script = document.getElementById('query').innerHTML;
       var script2 = document.getElementById('query2').innerHTML;
       var script3 = document.getElementById('query3').innerHTML;
-      console.log(script)
+      //console.log(script)
       var data = {};
       var runQuery = function(){
         MP.api.custom_query(script).done(function(results){
-          console.log(results)
+          //console.log(results)
           for(x in results[0]){
             data[results[0][x].key[0]] = results[0][x].value
           }
-          console.log(data)
+          //console.log(data)
           eventGraph.MPChart('setData', data);
         })
         // var data2 ={}
@@ -86,6 +86,7 @@
         for(x in results3[0]){
           data3[results3[0][x].key[0]] = results3[0][x].value
         }
+        console.log(results3)
         eventGraph2.MPChart('setData', data3);
         })
       }
