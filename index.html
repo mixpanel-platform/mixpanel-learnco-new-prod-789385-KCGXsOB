@@ -20,9 +20,7 @@
     }
   </script>
   <script id='query3'>
-    var oneWeekAgo = new Date();
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-    console.log(oneWeekAgo)
+ 
     function main() {
       return People(
         )
@@ -47,11 +45,12 @@
       var eventGraph  = $('#graph').MPChart({chartType: 'bar'});
       var eventGraph2  = $('#graph2').MPChart({chartType: 'bar'});
       var eventTable  = $('#table').MPTable({});
-      var sevenDaysRolling = moment().subtract(1, 'month').format("YYYY-MM-DD")
+      var oneWeekAgo = new Date();
+      oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
       var params = {
-        "rollingweek" : sevenDaysRolling
+        "rollingweek" : oneWeekAgo
       };
-      console.log(sevenDaysRolling)
+      console.log(oneWeekAgo)
       var script = document.getElementById('query').innerHTML;
       var script3 = document.getElementById('query3').innerHTML;
 
