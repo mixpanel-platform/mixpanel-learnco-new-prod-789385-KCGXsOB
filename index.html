@@ -71,15 +71,15 @@
           console.log(data)
           eventGraph.MPChart('setData', data);
         })
-        var data2 ={}
-        MP.api.custom_query(script2).done(function(results2){
-          console.log(results2)
-          for(x in results2[0]){
-            data2[results2[0][x].key[0]] = results2[0][x].value
-          }
-          console.log(data2)
-          //eventTable.MPTable('setData', data2);
-        })
+        // var data2 ={}
+        // MP.api.custom_query(script2).done(function(results2){
+        //   console.log(results2)
+        //   for(x in results2[0]){
+        //     data2[results2[0][x].key[0]] = results2[0][x].value
+        //   }
+        //   console.log(data2)
+        //   //eventTable.MPTable('setData', data2);
+        // })
         var data3 ={}
         MP.api.custom_query(script3).done(function(results3){
         console.log(results2)
