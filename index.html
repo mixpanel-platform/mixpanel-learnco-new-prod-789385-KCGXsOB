@@ -32,7 +32,11 @@
       // });
       var params = {};  
       var script = document.getElementById('query').innerHTML;
+      console.log(script)
       var data = {};
+      MP.api.custom_query(script).done(function(results){
+        console.log(results)
+      })
 
     </script>
   </body>
