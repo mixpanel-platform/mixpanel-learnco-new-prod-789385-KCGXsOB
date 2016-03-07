@@ -40,7 +40,7 @@
       return People(
         )
         .filter(function(user){
-        return user.properties.current_lesson !== undefined && user.properties.$last_seen >= new Date("2016-03-01")
+        return user.properties.current_lesson !== undefined && user.properties.$last_seen <= sevenDaysRolling
         })
         .groupBy(["properties.current_lesson"], mixpanel.reducer.count()
         )
