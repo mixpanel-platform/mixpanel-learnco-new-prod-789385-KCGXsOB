@@ -8,24 +8,6 @@
   </head>
   <body class="mixpanel-platform-body">
   <script id='query'>
-    var d = new Date()    
-    var oneWeekAgo = d.toISOString().substring(0, 10)
-    var params = {
-      "rollingweek": oneWeekAgo
-    };
-    function main() {
-      return People(
-        )
-        .filter(function(user){
-        return user.properties.current_lesson !== undefined && user.properties.current_track === "Full Stack Web Development" && user.properties.$last_seen >= params.rollingweek
-        })
-        .groupBy(["properties.current_lesson"], mixpanel.reducer.count()
-        )
-        .reduce(mixpanel.reducer.top(10))
-    }
-  </script>
-  <script id='query2'>
-    
     var oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
     var params = {
@@ -35,11 +17,30 @@
       return People(
         )
         .filter(function(user){
-        return user.properties.current_lesson !== undefined && user.properties.current_track === "Full Stack Web Development" && user.properties.$last_seen >= params.rollingweek
+        var time = new Date(user.time/1000)
+        return time >= params.rollingweek && user.properties.current_lesson !== undefined && user.properties.current_track === "Full Stack Web Development" && user.time >= params.rollingweek
         })
         .groupBy(["properties.current_lesson"], mixpanel.reducer.count()
         )
-        .reduce(mixpanel.reducer.top(1000))
+        .reduce(mixpanel.reducer.top(10))
+    }
+  </script>
+  <script id='query2'>
+var oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    var params = {
+      "rollingweek": oneWeekAgo
+    };
+    function main() {
+      return People(
+        )
+        .filter(function(user){
+        var time = new Date(user.time/1000)
+        return time >= params.rollingweek && user.properties.current_lesson !== undefined && user.properties.current_track === "Full Stack Web Development" && user.time >= params.rollingweek
+        })
+        .groupBy(["properties.current_lesson"], mixpanel.reducer.count()
+        )
+        //.reduce(mixpanel.reducer.top(10))
     }
   </script>
   <script id='query3'>
